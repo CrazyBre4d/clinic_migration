@@ -1,14 +1,14 @@
 package com.example.demo.models.dtos;
 
-import lombok.Value;
+import lombok.Builder;
+import lombok.Data;
 
-import java.io.Serializable;
-
-/**
- * DTO for {@link com.example.demo.models.entities.CompanyUser}
- */
-@Value
+@Data
+@Builder
 public class CompanyUserDto {
-    Long id;
-    String login;
+
+    private Long id;
+
+    private String login;
+
 }

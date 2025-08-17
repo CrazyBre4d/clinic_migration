@@ -1,17 +1,17 @@
 package com.example.demo.models.dtos;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Value;
 
 import java.io.Serializable;
 
-/**
- * DTO for {@link com.example.demo.models.entities.PatientProfile}
- */
-@Value
-public class PatientProfileDto implements Serializable {
-    Long id;
-    String firstName;
-    String lastName;
-    String oldClientGuid;
-    Short statusId;
+@Data
+@Builder
+public class PatientProfileDto {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String oldClientGuid;
+    private Short statusId;
 }

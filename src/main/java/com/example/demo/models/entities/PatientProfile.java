@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -26,4 +28,6 @@ public class PatientProfile {
     @Column(name = "status_id", nullable = false)
     private Short statusId;
 
+    @OneToMany(mappedBy = "patient")
+    private Set<PatientNote> patientNotes;
 }
