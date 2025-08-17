@@ -4,14 +4,14 @@ import com.example.demo.models.entities.PatientProfile;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 public class PatientNoteDto {
     private Long id;
-    private LocalDate createdDateTime;
-    private LocalDate lastModifiedDateTime;
+    private LocalDateTime createdDateTime;
+    private LocalDateTime lastModifiedDateTime;
     private CompanyUserDto createdByUser;
     private CompanyUserDto lastModifiedByUser;
     private String note;

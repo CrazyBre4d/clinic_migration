@@ -23,7 +23,7 @@ public class ImportService {
 
     @Transactional
     public void runImport() {
-        log.info("🚀 Запуск импорта заметок");
+        log.info("Запуск импорта заметок");
 
         List<OldClientDto> clients = oldSystemClient.getAllClients();
         int totalNotes = 0;
@@ -46,7 +46,7 @@ public class ImportService {
             }
 
             List<OldNoteDto> notes = oldSystemClient.getNotesForClient(
-                    client.getAgency(), client.getGuid(),
+                    client.getGuid(), client.getAgency(),
                     LocalDate.now().minusYears(5),
                     LocalDate.now()
             );
@@ -62,7 +62,7 @@ public class ImportService {
             }
         }
 
-        log.info("✅ Импорт завершён. Всего заметок: {}, импортировано: {}, пропущено: {}",
+        log.info("Импорт завершён. Всего заметок: {}, импортировано: {}, пропущено: {}",
                 totalNotes, imported, skipped);
     }
 }

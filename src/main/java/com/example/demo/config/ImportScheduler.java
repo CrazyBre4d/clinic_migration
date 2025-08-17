@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ImportScheduler {
     private final ImportService importService;
 
-    @Scheduled(cron = "0 15 */2 * * *")
+    @Scheduled(cron = "0 15 1/2 * * *")
     public void runImport() {
         importService.runImport();
     }

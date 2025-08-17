@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
@@ -24,16 +24,16 @@ public class NoteSyncService {
 
     @Transactional
     public void syncNote(OldNoteDto oldNote, PatientProfile patient) {
-        Optional<PatientNote> existing = patientNoteRepository.findById(Long.valueOf(oldNote.getGuid()));
+        Optional<PatientNote> existing = patientNoteRepository.findByOldSystemGuid(oldNote.getGuid());
 
-        LocalDate created = LocalDate.parse(oldNote.getCreatedDateTime(), FORMAT);
-        LocalDate modified = LocalDate.parse(oldNote.getModifiedDateTime(), FORMAT);
+        LocalDateTime created = LocalDateTime.parse(oldNote.getCreatedDateTime(), FORMAT);
+        LocalDateTime modified = LocalDateTime.parse(oldNote.getModifiedDateTime(), FORMAT);
 
         CompanyUser user = userMappingService.getOrCreateUser(oldNote.getLoggedUser());
 
         if (existing.isEmpty()) {
             PatientNote note = new PatientNote();
-            note.setId(Long.valueOf(oldNote.getGuid()));
+            note.setOldSystemGuid(oldNote.getGuid());
             note.setCreatedDateTime(created);
             note.setLastModifiedDateTime(modified);
             note.setCreatedByUser(user);

@@ -1,12 +1,10 @@
 package com.example.demo.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,10 +17,10 @@ public class PatientNote {
     private Long id;
 
     @Column(name = "created_date_time", nullable = false)
-    private LocalDate createdDateTime;
+    private LocalDateTime createdDateTime;
 
     @Column(name = "last_modified_date_time", nullable = false)
-    private LocalDate lastModifiedDateTime;
+    private LocalDateTime lastModifiedDateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by_user_id")
@@ -34,6 +32,9 @@ public class PatientNote {
 
     @Column(name = "note", length = 4000)
     private String note;
+
+    @Column(name = "old_system_guid", unique = true)
+    private String oldSystemGuid;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)

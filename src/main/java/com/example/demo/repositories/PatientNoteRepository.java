@@ -9,4 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface PatientNoteRepository extends JpaRepository<PatientNote, Long>, JpaSpecificationExecutor<PatientNote> {
+    Optional<PatientNote> findByOldSystemGuid(String oldSystemGuid);
 }
