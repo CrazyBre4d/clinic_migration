@@ -8,7 +8,7 @@ import lombok.Data;
 public class OldNoteDto {
     private String guid;
     private String comments;
-    private String clientGuid;
+    private String noteDateTime;
     private String loggedUser;
     private String createdDateTime;
     private String modifiedDateTime;

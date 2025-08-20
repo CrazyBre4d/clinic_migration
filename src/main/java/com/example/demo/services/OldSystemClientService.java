@@ -37,9 +37,9 @@ public class OldSystemClientService {
 
         Map<String, Object> payload = new HashMap<>();
         payload.put("agency", agency);
-        payload.put("clientGuid", clientGuid);
-        payload.put("dateFrom", from.toString());
-        payload.put("dateTo", to.toString());
+        payload.put("guid", clientGuid);
+        payload.put("date_from", from.toString());
+        payload.put("date_to", to.toString());
 
         ResponseEntity<OldNoteDto[]> response = restTemplate.postForEntity(url, payload, OldNoteDto[].class);
         return response.getBody() != null ? Arrays.asList(response.getBody()) : Collections.emptyList();

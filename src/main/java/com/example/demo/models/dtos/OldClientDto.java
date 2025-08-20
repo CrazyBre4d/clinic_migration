@@ -3,6 +3,8 @@ package com.example.demo.models.dtos;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Builder
 public class OldClientDto {
@@ -13,4 +15,5 @@ public class OldClientDto {
     private String status;
     private String dob;
     private String createdDateTime;
+    private Set<OldNoteDto> oldNotes;
 }
